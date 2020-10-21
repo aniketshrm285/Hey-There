@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "810353750946",
+    "firebase_url": "https://hey-there-e827c.firebaseio.com",
+    "project_id": "hey-there-e827c",
+    "storage_bucket": "hey-there-e827c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810353750946:android:5c04eedccddc63162bb8fb",
+        "android_client_info": {
+          "package_name": "com.example.heythere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810353750946-13rk6j13icj1n5sepjn77tbkukeacj17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.heythere",
+            "certificate_hash": "99ffa12ef66625313f04d9e397d49ef01aa2af13"
+          }
+        },
+        {
+          "client_id": "810353750946-gfja93pshf1nhrl5rhosf3spiprg4rcd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARIDMCfwAJC6vu-XAQXVvaNqSqDfmAgx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810353750946-gfja93pshf1nhrl5rhosf3spiprg4rcd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
