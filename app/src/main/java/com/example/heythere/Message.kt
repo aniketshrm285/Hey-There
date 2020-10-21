@@ -9,7 +9,7 @@ interface ChatEvent {
 }
 
 data class Message(
-    val msg: String,
+    var msg: String,
     val senderId: String,
     val msgId: String,
     val type: String = "TEXT",

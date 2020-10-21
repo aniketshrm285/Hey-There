@@ -59,7 +59,6 @@ class ChatsFragment : Fragment() {
                 position: Int,
                 inbox: Inbox
             ) {
-
                 viewHolder.bind(inbox) { name: String, photo: String, id: String ->
                     startActivity(
                         ChatActivity.createChatActivity(

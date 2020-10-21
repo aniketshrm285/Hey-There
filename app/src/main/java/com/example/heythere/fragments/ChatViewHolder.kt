@@ -5,6 +5,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.heythere.R
 import com.example.heythere.models.Inbox
+import com.example.heythere.utils.AES
 import com.example.heythere.utils.formatAsListItem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item.view.*
@@ -16,8 +17,9 @@ class ChatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             countTv.text = item.count.toString()
             timeTv.text = item.time.formatAsListItem(context)
 
+
             titleTv.text = item.name
-            subTitleTv.text = item.msg
+            subTitleTv.text = AES.AESDecryptionMethod(item.msg)
             Picasso.get()
                 .load(item.image)
                 .placeholder(R.drawable.defaultavatar)

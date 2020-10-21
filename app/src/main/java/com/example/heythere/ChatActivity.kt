@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.heythere.adapters.ChatAdapter
 import com.example.heythere.models.Inbox
 import com.example.heythere.models.User
+import com.example.heythere.utils.AES
+import com.example.heythere.utils.AES.Companion.AESEncryptionMethod
 import com.example.heythere.utils.KeyboardVisibilityUtil
 import com.example.heythere.utils.isSameDayAs
 import com.google.firebase.auth.FirebaseAuth
@@ -22,12 +24,22 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.UnsupportedEncodingException
+import java.security.InvalidKeyException
+import javax.crypto.BadPaddingException
+import javax.crypto.Cipher
+import javax.crypto.IllegalBlockSizeException
+import javax.crypto.spec.SecretKeySpec
 
 const val USER_ID = "userId"
 const val USER_THUMB_IMAGE = "thumbImage"
 const val USER_NAME = "userName"
 
 class ChatActivity : AppCompatActivity() {
+
+
+
+
 
     private val friendId: String by lazy {
         intent.getStringExtra(USER_ID).toString()
@@ -55,6 +67,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         EmojiManager.install(GoogleEmojiProvider())
         setContentView(R.layout.activity_chat)
+
         keyboardVisibilityHelper = KeyboardVisibilityUtil(rootView) {
             msgRv.scrollToPosition(mutableItems.size - 1)
         }
@@ -90,13 +103,16 @@ class ChatActivity : AppCompatActivity() {
         sendBtn.setOnClickListener {
             msgEdtv.text?.let {
                 if (it.isNotEmpty()) {
-                    sendMessage(it.toString())
+
+                    val encryptedMessage = AESEncryptionMethod(it.toString())
+                    sendMessage(encryptedMessage)
                     it.clear()
                 }
             }
         }
 
         listenMessages() { msg, update ->
+            msg.msg = AES.AESDecryptionMethod(msg.msg)
             if (update) {
                 updateMessage(msg)
             } else {
